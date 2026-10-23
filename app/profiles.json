@@ -1,0 +1,30 @@
+{
+  "_WARNING": "THESE ARE EXAMPLE CAPS, NOT A SAFE DEFAULT FOR YOUR CHIP. Silicon degradation differs per CPU: on yours these numbers may be needlessly slow, or NOT LOW ENOUGH to protect you. Run Calibrate.ps1 to find YOUR chip's safe cap; it rewrites this file with your values. Until then the GUI's '[OK]' only means a cap was applied, not that it is correct for your silicon.",
+  "Note": "Bundled profile values are EXAMPLES - run Calibrate.ps1 to set your own. Fields: PCoreMHz / ECoreMHz are caps in MHz (0 = no cap); PMaxStatePct / EMaxStatePct are max processor state % (99 = turbo off). The P-core cap lands roughly 100-130 MHz below the requested value in practice.",
+  "CalibratedForThisMachine": false,
+  "Default": "Productivity",
+  "NotifyUser": true,
+  "StepDownOrder": [ "LowLoad", "Productivity", "Sustained", "TurboOff" ],
+  "Profiles": {
+    "LowLoad": {
+      "PCoreMHz": 5000, "ECoreMHz": 0, "PMaxStatePct": 100, "EMaxStatePct": 100,
+      "Description": "Highest cap. P-core peak ~4.89 GHz (-13% single-thread vs stock; all-core unchanged), E-cores uncapped (~4.06 GHz). ~510 MHz below the highest passing point, ~720 MHz below the failure point. Use after 2+ clean weeks on Productivity."
+    },
+    "Productivity": {
+      "PCoreMHz": 4600, "ECoreMHz": 0, "PMaxStatePct": 100, "EMaxStatePct": 100,
+      "Description": "Default daily driver. P-core peak ~4.48 GHz (-20% burst single-thread; sustained single-thread was already thermally limited to ~4.5 GHz, all-core unchanged), E-cores uncapped. ~920 MHz below the highest passing point."
+    },
+    "Sustained": {
+      "PCoreMHz": 3000, "ECoreMHz": 2500, "PMaxStatePct": 100, "EMaxStatePct": 100,
+      "Description": "Lowest frequency caps, for long all-core loads, heat and noise: all-core ~79 W / 85 C instead of ~101 W / 95 C, for about -7.5% all-core throughput. Also the first step-down after instability on Productivity."
+    },
+    "TurboOff": {
+      "PCoreMHz": 0, "ECoreMHz": 0, "PMaxStatePct": 99, "EMaxStatePct": 99,
+      "Description": "Turbo disabled on both core types: P ~2.14 GHz, E ~2.19 GHz, all-core ~55 W. Last-resort fallback."
+    },
+    "Stock": {
+      "PCoreMHz": 0, "ECoreMHz": 0, "PMaxStatePct": 100, "EMaxStatePct": 100,
+      "Description": "No limits. Reference only: fails the LP0 test at 5.6 GHz. Not recommended on this CPU."
+    }
+  }
+}

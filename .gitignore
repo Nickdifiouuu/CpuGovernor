@@ -1,0 +1,30 @@
+# logs / temp / per-run output
+*.log
+*.tmp
+calibration_result.md
+
+# app runtime data (created at install/use, never committed)
+app/data/
+app/logs/
+app/backup/
+app/charts/
+app/tasks/
+app/state.json
+app/governor.log
+app/investigation_log.md
+
+# gui runtime
+gui/data/
+gui/data-admin/
+gui/gui.log
+
+# editors / OS / python
+.vs/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# local test install (never commit)
+_testinstall/
+
